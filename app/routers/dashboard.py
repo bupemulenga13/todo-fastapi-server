@@ -85,7 +85,7 @@ async def labs_count(req: Request, db: Session = Depends(get_db)):
     status_code = items['status_code']
     message = items['message']
     start_date = items['start_date']
-    end_date = items['date']
+    end_date = items['end_date']
 
     if items:
       return   {
