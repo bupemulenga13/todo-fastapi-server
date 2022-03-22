@@ -1,23 +1,17 @@
 from sys import prefix
-from middleware.views import *
+from middleware.dsa_views import *
+from middleware.dqa_views import *
 from fastapi import FastAPI
 from typing import Any, List
 from fastapi.middleware.cors import CORSMiddleware
 
-from scripts.dsa import appointments
 from .routers import (
-    appointments,
-    dashboard,
-    diagnostics,
-    inidicators,
-    labour_and_delivery,
-    labs,
-    medications,
-    morbidity,
-    referals,
-    testing,
-    visits,
-    vitals
+	facility_details,
+	hts,
+	interactions,
+	pharm_pick,
+	pmtct,
+	tx
 )
 
 app = FastAPI() 
@@ -35,18 +29,17 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(appointments.router)
-app.include_router(dashboard.router)
-app.include_router(diagnostics.router)
-app.include_router(inidicators.router)
-app.include_router(labour_and_delivery.router)
-app.include_router(labs.router)
-app.include_router(medications.router)
-app.include_router(morbidity.router)
-app.include_router(referals.router)
-app.include_router(testing.router)
-app.include_router(vitals.router)
-app.include_router(visits.router)
+
+app.include_router(facility_details.router)
+app.include_router(hts.router)
+app.include_router(interactions.router)
+app.include_router(pharm_pick.router)
+app.include_router(pmtct.router)
+app.include_router(tx.router)
+
+
+
+
 
 @app.get('/api')
 async def home():

@@ -2,6 +2,10 @@ from datetime import date
 from pydantic import BaseModel
 from typing import Optional, Union, List
 
+# class OurBaseModel(BaseModel):
+#     class Config:
+#         orm_mode = True
+
 class QueryBaseSchema(BaseModel):
     start_date: Union[str, date] = None
     end_date: Union[str, date] = None
@@ -13,6 +17,5 @@ class GetCount(QueryBaseSchema):
     count: int
 
 class GetList(QueryBaseSchema):
-    list_count: int
     query_list: Optional[List[dict]] = None
     
