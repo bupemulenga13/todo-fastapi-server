@@ -201,7 +201,7 @@ def get_pmtc_eid_2_12(engine: Engine, start_date: str, end_date: str) -> Optiona
 	AND DATEDIFF(MONTH, rg.DateOfBirth, @EndDate) BETWEEN 1 and 13 
 	order by Nupin 
 		
-		`;
+		
 
 
 	 """)

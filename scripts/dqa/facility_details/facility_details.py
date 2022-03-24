@@ -11,6 +11,7 @@ def get_facility_details(engine: Engine) -> Optional[List[dict]]:
     """        
 	sql = text(
 	f"""
+		SET NOCOUNT ON
         IF (OBJECT_ID('tempdb..#TempFacilityImplementingPartner')) IS NOT NULL
         DROP TABLE #TempFacilityImplementingPartner
         --GO

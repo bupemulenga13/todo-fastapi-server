@@ -55,7 +55,22 @@ def api_utility_ed(view_, req: Request, db: Session = Depends(get_db)):
 
 def api_utility_db(view_,db: Session = Depends(get_db)):
 	result = view_(db)
-	return print(result)
+	query_list = result["items_list"]
+	status_code = result["status_code"]
+	message = result["message"]
+	if result:
+		return {
+			"query_list": query_list,
+			"status_code": status_code,
+			"message": message,
+		}
+
+	if not result:
+		raise HTTPException(status_code=400, detail="Not found")
+
+	else:
+		raise HTTPException(status_code=500, detail="we good")
+
 
 	# if not result:
 	#     raise HTTPException(status_code=400, detail="Not found")

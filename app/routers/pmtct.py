@@ -18,7 +18,7 @@ async def read_pmtct_eid_0_2(req: Request, db: Session = Depends(get_db)):
 async def read_pmtct_eid_2_12(req: Request, db: Session = Depends(get_db)):
     req_body = await req.json()
     result = api_utility_sd_ed(getpmtct_eid_2_12, req_body, db)
-    return result
+    return print(result)
 
 
 @router.post('/pmtct_eid_pos_0_2',response_model=query.GetList)
