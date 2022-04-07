@@ -1,3 +1,4 @@
+import sys
 from typing import List, Optional
 
 from sqlalchemy import text
@@ -11,7 +12,7 @@ def get_facility_details(engine: Engine) -> Optional[List[dict]]:
     """        
 	sql = text(
 	f"""
-		SET NOCOUNT ON
+		--SET NOCOUNT ON
         IF (OBJECT_ID('tempdb..#TempFacilityImplementingPartner')) IS NOT NULL
         DROP TABLE #TempFacilityImplementingPartner
         --GO
@@ -76,3 +77,6 @@ def get_facility_details(engine: Engine) -> Optional[List[dict]]:
 	result = engine.execute(sql)
 	rows = [dict(row) for row in result.fetchall()]
 	return rows 
+
+if __name__ == '__main__':
+    globals()[sys.argv[1]]()
